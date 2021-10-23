@@ -4,18 +4,30 @@
   "description": "## Setup",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build-server && npm run build-client",
-    "build-server": "babel src/server --out-dir ./dist",
-    "build-client": "babel src/client --copy-files --out-dir ./dist/public",
-    "start": "node ./dist/index.js"
+    "build": "webpack --mode production",
+    "build-babel": "npm run build-babel-server && npm run build-babel-client",
+    "build-babel-server": "babel src/server --out-dir ./dist",
+    "build-babel-client": "babel src/client --copy-files --out-dir ./dist/public",
+    "start": "node ./dist/server.js",
+    "test": "jest ./src",
+    "clean": "rimraf dist node_modules"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
-    "@babel/preset-env": "^7.15.8"
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.3",
+    "html-webpack-plugin": "^5.4.0",
+    "webpack": "^5.59.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-node-externals": "^3.0.0"
   }
 }
